@@ -16,22 +16,28 @@ export class UsersService {
   }
 
   findAll() {
-    return this.userRepository.find();
-  }
-
-  findOne(id: number) {
-    return this.userRepository.findOneBy({ id: id });
+    return {
+      usuarios: [
+        {
+          nome: 'Paulo',
+          endereco: 'av paulista',
+          telefone: '1155555555',
+        },
+        {
+          nome: 'Maria',
+          endereco: 'av faria lima',
+          telefone: '1155555580',
+        },
+        {
+          nome: 'Samantha',
+          endereco: 'av paulista',
+          telefone: '1155555590',
+        },
+      ],
+    };
   }
 
   async findOneByEmail(username: string) {
     return await this.userRepository.findOneBy({ email: username });
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return this.userRepository.update(id, updateUserDto);
-  }
-
-  remove(id: number) {
-    return this.userRepository.delete(id);
   }
 }
