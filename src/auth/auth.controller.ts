@@ -9,4 +9,9 @@ export class AuthController {
   async login(@Body() body) {
     return this.authService.validarUsuario(body.username, body.pass);
   }
+
+  @Post('auth/refresh')
+  reautenticar(@Body() body) {
+    return this.authService.reautenticar(body);
+  }
 }

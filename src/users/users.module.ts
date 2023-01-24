@@ -6,9 +6,10 @@ import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtStrategy } from 'src/auth/strategies/jwt-strategy';
+import { Token } from 'src/tokens/entities/token.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), JwtModule.register({})],
+  imports: [TypeOrmModule.forFeature([User, Token]), JwtModule.register({})],
   controllers: [UsersController],
   providers: [UsersService, AuthService, JwtStrategy],
 })
